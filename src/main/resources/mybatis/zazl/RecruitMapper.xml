@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.project.zazl.mapper.RecruitMapper" >
+  <resultMap id="BaseResultMap" type="com.ruoyi.project.zazl.domain.Recruit" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="POSITION_NAME" property="positionName" jdbcType="VARCHAR" />
+    <result column="RECRUIT_COUNT" property="recruitCount" jdbcType="VARCHAR" />
+    <result column="MIN_SALARY" property="minSalary" jdbcType="VARCHAR" />
+    <result column="MAX_SALARY" property="maxSalary" jdbcType="VARCHAR" />
+    <result column="FACE_DISCUSS_STATUS" property="faceDiscussStatus" jdbcType="VARCHAR" />
+    <result column="WELFARE" property="welfare" jdbcType="VARCHAR" />
+    <result column="EDUCATION" property="education" jdbcType="VARCHAR" />
+    <result column="FRESH_STUDENT" property="freshStudent" jdbcType="VARCHAR" />
+    <result column="WORK_YEARS" property="workYears" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CONCAT_NAME" property="concatName" jdbcType="VARCHAR" />
+    <result column="CONCAT_PHONE" property="concatPhone" jdbcType="VARCHAR" />
+    <result column="PHONE_PUBLIC" property="phonePublic" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_NAME" property="createUserName" jdbcType="VARCHAR" />
+    <result column="CREATE_ID" property="createId" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="REGION_id" property="regionId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, POSITION_NAME, RECRUIT_COUNT, MIN_SALARY, MAX_SALARY, FACE_DISCUSS_STATUS, WELFARE,
+    EDUCATION, FRESH_STUDENT, WORK_YEARS, REMARK, CONCAT_NAME, CONCAT_PHONE, PHONE_PUBLIC,
+    EMAIL, CREATE_USER_NAME, CREATE_ID, CREATE_DATE,REGION_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from QYGL_RECRUIT
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from QYGL_RECRUIT
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ruoyi.project.zazl.domain.Recruit" >
+    insert into QYGL_RECRUIT (ID, POSITION_NAME, RECRUIT_COUNT,
+      MIN_SALARY, MAX_SALARY, FACE_DISCUSS_STATUS,
+      WELFARE, EDUCATION, FRESH_STUDENT,
+      WORK_YEARS, REMARK, CONCAT_NAME,
+      CONCAT_PHONE, PHONE_PUBLIC, EMAIL,
+      CREATE_USER_NAME, CREATE_ID, CREATE_DATE,REGION_ID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{positionName,jdbcType=VARCHAR}, #{recruitCount,jdbcType=VARCHAR},
+      #{minSalary,jdbcType=VARCHAR}, #{maxSalary,jdbcType=VARCHAR}, #{faceDiscussStatus,jdbcType=VARCHAR},
+      #{welfare,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{freshStudent,jdbcType=VARCHAR},
+      #{workYears,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{concatName,jdbcType=VARCHAR},
+      #{concatPhone,jdbcType=VARCHAR}, #{phonePublic,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{createUserName,jdbcType=VARCHAR}, #{createId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{regionId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ruoyi.project.zazl.domain.Recruit" >
+    insert into QYGL_RECRUIT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="positionName != null" >
+        POSITION_NAME,
+      </if>
+      <if test="recruitCount != null" >
+        RECRUIT_COUNT,
+      </if>
+      <if test="minSalary != null" >
+        MIN_SALARY,
+      </if>
+      <if test="maxSalary != null" >
+        MAX_SALARY,
+      </if>
+      <if test="faceDiscussStatus != null" >
+        FACE_DISCUSS_STATUS,
+      </if>
+      <if test="welfare != null" >
+        WELFARE,
+      </if>
+      <if test="education != null" >
+        EDUCATION,
+      </if>
+      <if test="freshStudent != null" >
+        FRESH_STUDENT,
+      </if>
+      <if test="workYears != null" >
+        WORK_YEARS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="concatName != null" >
+        CONCAT_NAME,
+      </if>
+      <if test="concatPhone != null" >
+        CONCAT_PHONE,
+      </if>
+      <if test="phonePublic != null" >
+        PHONE_PUBLIC,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="createUserName != null" >
+        CREATE_USER_NAME,
+      </if>
+      <if test="createId != null" >
+        CREATE_ID,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="regionId != null" >
+        REGION_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="positionName != null" >
+        #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitCount != null" >
+        #{recruitCount,jdbcType=VARCHAR},
+      </if>
+      <if test="minSalary != null" >
+        #{minSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="maxSalary != null" >
+        #{maxSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="faceDiscussStatus != null" >
+        #{faceDiscussStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null" >
+        #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="freshStudent != null" >
+        #{freshStudent,jdbcType=VARCHAR},
+      </if>
+      <if test="workYears != null" >
+        #{workYears,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="concatName != null" >
+        #{concatName,jdbcType=VARCHAR},
+      </if>
+      <if test="concatPhone != null" >
+        #{concatPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="phonePublic != null" >
+        #{phonePublic,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ruoyi.project.zazl.domain.Recruit" >
+    update QYGL_RECRUIT
+    <set >
+      <if test="positionName != null" >
+        POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitCount != null" >
+        RECRUIT_COUNT = #{recruitCount,jdbcType=VARCHAR},
+      </if>
+      <if test="minSalary != null" >
+        MIN_SALARY = #{minSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="maxSalary != null" >
+        MAX_SALARY = #{maxSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="faceDiscussStatus != null" >
+        FACE_DISCUSS_STATUS = #{faceDiscussStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null" >
+        WELFARE = #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        EDUCATION = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="freshStudent != null" >
+        FRESH_STUDENT = #{freshStudent,jdbcType=VARCHAR},
+      </if>
+      <if test="workYears != null" >
+        WORK_YEARS = #{workYears,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="concatName != null" >
+        CONCAT_NAME = #{concatName,jdbcType=VARCHAR},
+      </if>
+      <if test="concatPhone != null" >
+        CONCAT_PHONE = #{concatPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="phonePublic != null" >
+        PHONE_PUBLIC = #{phonePublic,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null" >
+        CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createId != null" >
+        CREATE_ID = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ruoyi.project.zazl.domain.Recruit" >
+    update QYGL_RECRUIT
+    set POSITION_NAME = #{positionName,jdbcType=VARCHAR},
+      RECRUIT_COUNT = #{recruitCount,jdbcType=VARCHAR},
+      MIN_SALARY = #{minSalary,jdbcType=VARCHAR},
+      MAX_SALARY = #{maxSalary,jdbcType=VARCHAR},
+      FACE_DISCUSS_STATUS = #{faceDiscussStatus,jdbcType=VARCHAR},
+      WELFARE = #{welfare,jdbcType=VARCHAR},
+      EDUCATION = #{education,jdbcType=VARCHAR},
+      FRESH_STUDENT = #{freshStudent,jdbcType=VARCHAR},
+      WORK_YEARS = #{workYears,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CONCAT_NAME = #{concatName,jdbcType=VARCHAR},
+      CONCAT_PHONE = #{concatPhone,jdbcType=VARCHAR},
+      PHONE_PUBLIC = #{phonePublic,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      CREATE_ID = #{createId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      REGION_ID = #{regionId,jdbcType=VARCHAR},
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getListForPager" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from QYGL_RECRUIT
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="createId != null">
+        and CREATE_ID = #{createId}
+      </if>
+      <if test="positionName != null">
+        and POSITION_NAME like  concat(concat('%', #{positionName}), '%')
+      </if>
+    </trim>
+    order by create_date desc
+  </select>
+</mapper>

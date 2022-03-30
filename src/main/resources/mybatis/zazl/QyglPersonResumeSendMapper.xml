@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.zazl.mapper.QyglPersonResumeSendMapper">
+
+    <resultMap type="QyglPersonResumeSend" id="QyglPersonResumeSendResult">
+        <result property="id"    column="id"    />
+        <result property="personId"    column="person_id"    />
+        <result property="personName"    column="person_name"    />
+        <result property="phoneNo"    column="phone_no"    />
+        <result property="email"    column="email"    />
+        <result property="gender"    column="gender"    />
+        <result property="birthday"    column="birthday"    />
+        <result property="village"    column="village"    />
+        <result property="education"    column="education"    />
+        <result property="majorKill"    column="major_kill"    />
+        <result property="nation"    column="nation"    />
+        <result property="marryType"    column="marry_type"    />
+        <result property="outlookType"    column="outlook_type"    />
+        <result property="height"    column="height"    />
+        <result property="weight"    column="weight"    />
+        <result property="salary"    column="salary"    />
+        <result property="introduce"    column="introduce"    />
+        <result property="readStatus"    column="read_status"    />
+        <result property="regionId"    column="region_id"    />
+        <result property="createDate"    column="create_date"    />
+    </resultMap>
+
+    <sql id="selectQyglPersonResumeSendVo">
+        select id, person_id, person_name, phone_no, email, gender, birthday, village, education, major_kill, nation, marry_type, outlook_type, height, weight, salary, introduce, read_status, region_id, create_date from qygl_person_resume_send
+    </sql>
+
+    <select id="selectQyglPersonResumeSendList" parameterType="QyglPersonResumeSend" resultMap="QyglPersonResumeSendResult">
+        <include refid="selectQyglPersonResumeSendVo"/>
+        <where>
+            <if test="personId != null  and personId != ''"> and person_id = #{personId}</if>
+            <if test="personName != null  and personName != ''"> and person_name like concat(concat('%', #{personName}), '%')</if>
+            <if test="phoneNo != null  and phoneNo != ''"> and phone_no = #{phoneNo}</if>
+            <if test="email != null  and email != ''"> and email = #{email}</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="birthday != null  and birthday != ''"> and birthday = #{birthday}</if>
+            <if test="village != null  and village != ''"> and village = #{village}</if>
+            <if test="education != null  and education != ''"> and education = #{education}</if>
+            <if test="majorKill != null  and majorKill != ''"> and major_kill = #{majorKill}</if>
+            <if test="nation != null  and nation != ''"> and nation = #{nation}</if>
+            <if test="marryType != null  and marryType != ''"> and marry_type = #{marryType}</if>
+            <if test="outlookType != null  and outlookType != ''"> and outlook_type = #{outlookType}</if>
+            <if test="height != null  and height != ''"> and height = #{height}</if>
+            <if test="weight != null  and weight != ''"> and weight = #{weight}</if>
+            <if test="salary != null  and salary != ''"> and salary = #{salary}</if>
+            <if test="introduce != null  and introduce != ''"> and introduce = #{introduce}</if>
+            <if test="readStatus != null  and readStatus != ''"> and read_status = #{readStatus}</if>
+            <if test="regionId != null  and regionId != ''"> and region_id = #{regionId}</if>
+            <if test="createDate != null "> and create_date = #{createDate}</if>
+            <if test="createDate_start != null "> and create_date > to_date(#{createDate_start},'yyyy-mm-dd hh24:mi:ss')</if>
+        </where>
+    </select>
+
+    <select id="selectQyglPersonResumeSendById" parameterType="String" resultMap="QyglPersonResumeSendResult">
+        <include refid="selectQyglPersonResumeSendVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertQyglPersonResumeSend" parameterType="QyglPersonResumeSend">
+        insert into qygl_person_resume_send
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="personId != null">person_id,</if>
+            <if test="personName != null">person_name,</if>
+            <if test="phoneNo != null">phone_no,</if>
+            <if test="email != null">email,</if>
+            <if test="gender != null">gender,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="village != null">village,</if>
+            <if test="education != null">education,</if>
+            <if test="majorKill != null">major_kill,</if>
+            <if test="nation != null">nation,</if>
+            <if test="marryType != null">marry_type,</if>
+            <if test="outlookType != null">outlook_type,</if>
+            <if test="height != null">height,</if>
+            <if test="weight != null">weight,</if>
+            <if test="salary != null">salary,</if>
+            <if test="introduce != null">introduce,</if>
+            <if test="readStatus != null">read_status,</if>
+            <if test="regionId != null">region_id,</if>
+            <if test="createDate != null">create_date,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="personId != null">#{personId},</if>
+            <if test="personName != null">#{personName},</if>
+            <if test="phoneNo != null">#{phoneNo},</if>
+            <if test="email != null">#{email},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="birthday != null">#{birthday},</if>
+            <if test="village != null">#{village},</if>
+            <if test="education != null">#{education},</if>
+            <if test="majorKill != null">#{majorKill},</if>
+            <if test="nation != null">#{nation},</if>
+            <if test="marryType != null">#{marryType},</if>
+            <if test="outlookType != null">#{outlookType},</if>
+            <if test="height != null">#{height},</if>
+            <if test="weight != null">#{weight},</if>
+            <if test="salary != null">#{salary},</if>
+            <if test="introduce != null">#{introduce},</if>
+            <if test="readStatus != null">#{readStatus},</if>
+            <if test="regionId != null">#{regionId},</if>
+            <if test="createDate != null">#{createDate},</if>
+         </trim>
+    </insert>
+
+    <update id="updateQyglPersonResumeSend" parameterType="QyglPersonResumeSend">
+        update qygl_person_resume_send
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="personId != null">person_id = #{personId},</if>
+            <if test="personName != null">person_name = #{personName},</if>
+            <if test="phoneNo != null">phone_no = #{phoneNo},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="village != null">village = #{village},</if>
+            <if test="education != null">education = #{education},</if>
+            <if test="majorKill != null">major_kill = #{majorKill},</if>
+            <if test="nation != null">nation = #{nation},</if>
+            <if test="marryType != null">marry_type = #{marryType},</if>
+            <if test="outlookType != null">outlook_type = #{outlookType},</if>
+            <if test="height != null">height = #{height},</if>
+            <if test="weight != null">weight = #{weight},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="introduce != null">introduce = #{introduce},</if>
+            <if test="readStatus != null">read_status = #{readStatus},</if>
+            <if test="regionId != null">region_id = #{regionId},</if>
+            <if test="createDate != null">create_date = #{createDate},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteQyglPersonResumeSendById" parameterType="String">
+        delete from qygl_person_resume_send where id = #{id}
+    </delete>
+
+    <delete id="deleteQyglPersonResumeSendByIds" parameterType="String">
+        delete from qygl_person_resume_send where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

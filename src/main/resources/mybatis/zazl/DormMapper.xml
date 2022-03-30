@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.project.zazl.mapper.DormMapper" >
+  <resultMap id="BaseResultMap" type="com.ruoyi.project.zazl.domain.Dorm" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="BLOCK" property="block" jdbcType="VARCHAR" />
+    <result column="STOREY" property="storey" jdbcType="VARCHAR" />
+    <result column="ROOM" property="room" jdbcType="VARCHAR" />
+    <result column="ROOM_NAME" property="roomName" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
+    <result column="REGION_ID" property="regionId" jdbcType="VARCHAR" />
+    <result column="ROOM_NAME_UPDATE" property="roomNameUpdate" jdbcType="VARCHAR" />
+    <result column="BED_NUM" property="bedNum" jdbcType="VARCHAR" />
+    <result column="PUBLIC_STATUS" property="publicStatus" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="DELETE_STATUS" property="deleteStatus" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="COUNT" property="count" jdbcType="DECIMAL" />
+    <result column="RESIDE_TYPE" property="resideType" jdbcType="VARCHAR" />
+    <result column="INOUT" property="inout" jdbcType="DECIMAL" />
+    <result column="FKCOUNT" property="fkcount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, BLOCK, STOREY, ROOM, ROOM_NAME, CREATE_USER_ID, REGION_ID,ROOM_NAME_UPDATE,BED_NUM,PUBLIC_STATUS,UPDATE_TIME,DELETE_STATUS,NAME,COUNT,RESIDE_TYPE,INOUT,FKCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from QYGL_DORM
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ruoyi.project.zazl.domain.Dorm" >
+    update QYGL_DORM
+    <set >
+      <if test="block != null" >
+        BLOCK = #{block,jdbcType=VARCHAR},
+      </if>
+      <if test="storey != null" >
+        STOREY = #{storey,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        ROOM = #{room,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null" >
+        ROOM_NAME = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNameUpdate != null" >
+        ROOM_NAME_UPDATE = #{roomNameUpdate,jdbcType=VARCHAR},
+      </if>
+      <if test="bedNum != null" >
+        BED_NUM = #{bedNum,jdbcType=VARCHAR},
+      </if>
+      <if test="publicStatus != null" >
+        PUBLIC_STATUS = #{publicStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null" >
+        DELETE_STATUS = #{deleteStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        COUNT = #{count,jdbcType=DECIMAL},
+      </if>
+      <if test="resideType != null" >
+        RESIDE_TYPE = #{resideType,jdbcType=VARCHAR},
+      </if>
+      <if test="inout != null" >
+        INOUT = #{inout,jdbcType=DECIMAL},
+      </if>
+      <if test="fkcount != null" >
+        FKCOUNT = #{fkcount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from QYGL_DORM
+    <trim prefix="where" prefixOverrides="and|or">
+      and delete_status = '0'
+      <if test="regionId != null and regionId != ''">
+        and region_id = #{regionId}
+      </if>
+      <if test="roomName != null and roomName != ''">
+        and ROOM_NAME_UPDATE = #{roomName}
+      </if>
+    </trim>
+    order by ROOM_NAME asc
+  </select>
+
+  <select id="getResideCount" parameterType="java.util.HashMap" resultType="string">
+    select to_char(sum(nvl(count,0)+nvl(inout,0)+nvl(fkcount,0))) count
+    from QYGL_DORM
+    <trim prefix="where" prefixOverrides="and|or">
+      and delete_status = '0'
+      <if test="regionId != null">
+        and region_id = #{regionId}
+      </if>
+      <if test="idCard != null">
+        and ID_CARD = #{idCard}
+      </if>
+      <if test="userName != null">
+        and USER_NAME like concat(concat('%', #{userName}), '%')
+      </if>
+      <if test="unitName != null">
+        and UNIT_NAME like concat(concat('%', #{unitName}), '%')
+      </if>
+      <if test="roleName != null">
+        and ROLE_NAME like concat(concat('%', #{roleName}), '%')
+      </if>
+      <if test="phoneNumber != null">
+        and PHONE_NUMBER = #{phoneNumber}
+      </if>
+      <if test="roleLevel != null">
+        and ROLE_LEVEL = #{roleLevel}
+      </if>
+      <if test="lessMoreLevel != null">
+        and ROLE_LEVEL <![CDATA[>=]]> #{lessMoreLevel}
+      </if>
+      <if test="street != null">
+        and STREET = #{street}
+      </if>
+    </trim>
+  </select>
+
+  <select id="getRoomDetail" resultMap="BaseResultMap">
+    select a.ID,A.BLOCK,A.STOREY,A.ROOM,A.ROOM_NAME,A.CREATE_USER_ID,A.REGION_ID,A.ROOM_NAME_UPDATE,A.BED_NUM,A.PUBLIC_STATUS,A.UPDATE_TIME,A.DELETE_STATUS,b.name,(select count(*) from qygl_person_info where (person_type = '0' and (status = '1' or status = '0') and TEMP_ADDRESS = a.id and reside_type = '1') or (person_type = '1' and TEMP_ADDRESS = a.id and stay_Status = '1'))count,
+    (select case when(sum(nvl(gender,0))>count(*) and sum(nvl(gender,0))&lt;2*count(*))then '2' else '1' end  from (select gender,temp_address from qygl_person_info where (person_type = '0' and reside_type = '1' and(status = '1' or status = '0')) or(person_type = '1' and stay_Status = '1') ) where temp_address = a.id)reside_Type,
+    ((select count(*) from qygl_person_info where ((person_type = '0' and (status = '1' or status = '0') and reside_type = '1') or (person_type = '1' and stay_Status = '1')) and temp_address = a.id and SRC_PARENT_INDEX not in(
+    select INDEX_CODE from qygl_region_info where index_code = a.region_id)))inout,
+    (select count(*) from qygl_person_info where person_type = '1' and stay_Status = '1' and TEMP_ADDRESS = a.id)FKcount
+    from QYGL_DORM a left join qygl_region_info b on a.public_status = b.index_code
+    where a.id = #{id}
+  </select>
+</mapper>

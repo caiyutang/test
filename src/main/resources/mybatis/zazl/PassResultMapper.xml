@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.project.zazl.mapper.PassResultMapper" >
+  <resultMap id="BaseResultMap" type="com.ruoyi.project.zazl.domain.PassResult" >
+    <id column="RESULT_ID" property="resultId" jdbcType="VARCHAR" />
+    <result column="PERSON_ID" property="personId" jdbcType="VARCHAR" />
+    <result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+    <result column="DEPART_ID" property="departId" jdbcType="OTHER" />
+    <result column="DEPART_NAME" property="departName" jdbcType="VARCHAR" />
+    <result column="GROUP_CODE" property="groupCode" jdbcType="VARCHAR" />
+    <result column="SHIFT_CODE" property="shiftCode" jdbcType="VARCHAR" />
+    <result column="ON_DUTY_DATE" property="onDutyDate" jdbcType="TIMESTAMP" />
+    <result column="CLOCK_ON_TIME" property="clockOnTime" jdbcType="TIMESTAMP" />
+    <result column="ON_STATUS" property="onStatus" jdbcType="DECIMAL" />
+    <result column="AC_READER_NAME_ON" property="acReaderNameOn" jdbcType="VARCHAR" />
+    <result column="DOOR_NAME_ON" property="doorNameOn" jdbcType="VARCHAR" />
+    <result column="CONTROLLER_NAME_ON" property="controllerNameOn" jdbcType="VARCHAR" />
+    <result column="MINUTE_LATE" property="minuteLate" jdbcType="DECIMAL" />
+    <result column="ON_TIME" property="onTime" jdbcType="TIMESTAMP" />
+    <result column="OFF_TIME" property="offTime" jdbcType="TIMESTAMP" />
+    <result column="CLOCK_OFF_TIME" property="clockOffTime" jdbcType="TIMESTAMP" />
+    <result column="OFF_STATUS" property="offStatus" jdbcType="DECIMAL" />
+    <result column="AC_READER_NAME_OFF" property="acReaderNameOff" jdbcType="VARCHAR" />
+    <result column="DOOR_NAME_OFF" property="doorNameOff" jdbcType="VARCHAR" />
+    <result column="CONTROLLER_NAME_OFF" property="controllerNameOff" jdbcType="VARCHAR" />
+    <result column="CARD_NO_OFF" property="cardNoOff" jdbcType="VARCHAR" />
+    <result column="MINL_EAVE" property="minlEave" jdbcType="DECIMAL" />
+    <result column="MIN_COMP_LEAVE" property="minCompLeave" jdbcType="DECIMAL" />
+    <result column="MIN_OVER_TIME" property="minOverTime" jdbcType="DECIMAL" />
+    <result column="MIN_ATTEND" property="minAttend" jdbcType="DECIMAL" />
+    <result column="TIME_ALL" property="timeAll" jdbcType="DECIMAL" />
+    <result column="LESS_TIME" property="lessTime" jdbcType="DECIMAL" />
+    <result column="MINUTE_EARLY" property="minuteEarly" jdbcType="DECIMAL" />
+    <result column="REGION_ID" property="regionId" jdbcType="VARCHAR" />
+    <result column="RESULT_TYPE" property="resultType" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="ON_STATUS_BAK" property="onStatusBak" jdbcType="DECIMAL" />
+    <result column="OFF_STATUS_BAK" property="offStatusBak" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RESULT_ID, PERSON_ID, PERSON_NAME, DEPART_ID, DEPART_NAME, GROUP_CODE, SHIFT_CODE,
+    ON_DUTY_DATE, CLOCK_ON_TIME, ON_STATUS, AC_READER_NAME_ON, DOOR_NAME_ON, CONTROLLER_NAME_ON,
+    MINUTE_LATE, ON_TIME, OFF_TIME, CLOCK_OFF_TIME, OFF_STATUS, AC_READER_NAME_OFF, DOOR_NAME_OFF,
+    CONTROLLER_NAME_OFF, CARD_NO_OFF, MINL_EAVE, MIN_COMP_LEAVE, MIN_OVER_TIME, MIN_ATTEND,
+    TIME_ALL, LESS_TIME, MINUTE_EARLY,REGION_ID,RESULT_TYPE,REMARK,ON_STATUS_BAK,OFF_STATUS_BAK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from QYGL_PASS_RESULT
+    where RESULT_ID = #{resultId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from QYGL_PASS_RESULT
+    where RESULT_ID = #{resultId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ruoyi.project.zazl.domain.PassResult" >
+    insert into QYGL_PASS_RESULT (RESULT_ID, PERSON_ID, PERSON_NAME,
+      DEPART_ID, DEPART_NAME, GROUP_CODE,
+      SHIFT_CODE, ON_DUTY_DATE, CLOCK_ON_TIME,
+      ON_STATUS, AC_READER_NAME_ON, DOOR_NAME_ON,
+      CONTROLLER_NAME_ON, MINUTE_LATE, ON_TIME,
+      OFF_TIME, CLOCK_OFF_TIME, OFF_STATUS,
+      AC_READER_NAME_OFF, DOOR_NAME_OFF, CONTROLLER_NAME_OFF,
+      CARD_NO_OFF, MINL_EAVE, MIN_COMP_LEAVE,
+      MIN_OVER_TIME, MIN_ATTEND, TIME_ALL,
+      LESS_TIME, MINUTE_EARLY,REMARK,ON_STATUS_BAK,OFF_STATUS_BAK)
+    values (#{resultId,jdbcType=VARCHAR}, #{personId,jdbcType=VARCHAR}, #{personName,jdbcType=VARCHAR},
+      #{departId,jdbcType=OTHER}, #{departName,jdbcType=VARCHAR}, #{groupCode,jdbcType=VARCHAR},
+      #{shiftCode,jdbcType=VARCHAR}, #{onDutyDate,jdbcType=TIMESTAMP}, #{clockOnTime,jdbcType=TIMESTAMP},
+      #{onStatus,jdbcType=DECIMAL}, #{acReaderNameOn,jdbcType=VARCHAR}, #{doorNameOn,jdbcType=VARCHAR},
+      #{controllerNameOn,jdbcType=VARCHAR}, #{minuteLate,jdbcType=DECIMAL}, #{onTime,jdbcType=TIMESTAMP},
+      #{offTime,jdbcType=TIMESTAMP}, #{clockOffTime,jdbcType=TIMESTAMP}, #{offStatus,jdbcType=DECIMAL},
+      #{acReaderNameOff,jdbcType=VARCHAR}, #{doorNameOff,jdbcType=VARCHAR}, #{controllerNameOff,jdbcType=VARCHAR},
+      #{cardNoOff,jdbcType=VARCHAR}, #{minlEave,jdbcType=DECIMAL}, #{minCompLeave,jdbcType=DECIMAL},
+      #{minOverTime,jdbcType=DECIMAL}, #{minAttend,jdbcType=DECIMAL}, #{timeAll,jdbcType=DECIMAL},
+      #{lessTime,jdbcType=DECIMAL}, #{minuteEarly,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{onStatusBak,jdbcType=DECIMAL},
+       #{offStatusBak,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ruoyi.project.zazl.domain.PassResult" >
+    insert into QYGL_PASS_RESULT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resultId != null" >
+        RESULT_ID,
+      </if>
+      <if test="personId != null" >
+        PERSON_ID,
+      </if>
+      <if test="personName != null" >
+        PERSON_NAME,
+      </if>
+      <if test="departId != null" >
+        DEPART_ID,
+      </if>
+      <if test="departName != null" >
+        DEPART_NAME,
+      </if>
+      <if test="groupCode != null" >
+        GROUP_CODE,
+      </if>
+      <if test="shiftCode != null" >
+        SHIFT_CODE,
+      </if>
+      <if test="onDutyDate != null" >
+        ON_DUTY_DATE,
+      </if>
+      <if test="clockOnTime != null" >
+        CLOCK_ON_TIME,
+      </if>
+      <if test="onStatus != null" >
+        ON_STATUS,
+      </if>
+      <if test="acReaderNameOn != null" >
+        AC_READER_NAME_ON,
+      </if>
+      <if test="doorNameOn != null" >
+        DOOR_NAME_ON,
+      </if>
+      <if test="controllerNameOn != null" >
+        CONTROLLER_NAME_ON,
+      </if>
+      <if test="minuteLate != null" >
+        MINUTE_LATE,
+      </if>
+      <if test="onTime != null" >
+        ON_TIME,
+      </if>
+      <if test="offTime != null" >
+        OFF_TIME,
+      </if>
+      <if test="clockOffTime != null" >
+        CLOCK_OFF_TIME,
+      </if>
+      <if test="offStatus != null" >
+        OFF_STATUS,
+      </if>
+      <if test="acReaderNameOff != null" >
+        AC_READER_NAME_OFF,
+      </if>
+      <if test="doorNameOff != null" >
+        DOOR_NAME_OFF,
+      </if>
+      <if test="controllerNameOff != null" >
+        CONTROLLER_NAME_OFF,
+      </if>
+      <if test="cardNoOff != null" >
+        CARD_NO_OFF,
+      </if>
+      <if test="minlEave != null" >
+        MINL_EAVE,
+      </if>
+      <if test="minCompLeave != null" >
+        MIN_COMP_LEAVE,
+      </if>
+      <if test="minOverTime != null" >
+        MIN_OVER_TIME,
+      </if>
+      <if test="minAttend != null" >
+        MIN_ATTEND,
+      </if>
+      <if test="timeAll != null" >
+        TIME_ALL,
+      </if>
+      <if test="lessTime != null" >
+        LESS_TIME,
+      </if>
+      <if test="minuteEarly != null" >
+        MINUTE_EARLY,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="onStatusBak != null" >
+        ON_STATUS_BAK,
+      </if>
+      <if test="offStatusBak != null" >
+        OFF_STATUS_BAK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resultId != null" >
+        #{resultId,jdbcType=VARCHAR},
+      </if>
+      <if test="personId != null" >
+        #{personId,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="departId != null" >
+        #{departId,jdbcType=OTHER},
+      </if>
+      <if test="departName != null" >
+        #{departName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null" >
+        #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shiftCode != null" >
+        #{shiftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="onDutyDate != null" >
+        #{onDutyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clockOnTime != null" >
+        #{clockOnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onStatus != null" >
+        #{onStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="acReaderNameOn != null" >
+        #{acReaderNameOn,jdbcType=VARCHAR},
+      </if>
+      <if test="doorNameOn != null" >
+        #{doorNameOn,jdbcType=VARCHAR},
+      </if>
+      <if test="controllerNameOn != null" >
+        #{controllerNameOn,jdbcType=VARCHAR},
+      </if>
+      <if test="minuteLate != null" >
+        #{minuteLate,jdbcType=DECIMAL},
+      </if>
+      <if test="onTime != null" >
+        #{onTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offTime != null" >
+        #{offTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clockOffTime != null" >
+        #{clockOffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offStatus != null" >
+        #{offStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="acReaderNameOff != null" >
+        #{acReaderNameOff,jdbcType=VARCHAR},
+      </if>
+      <if test="doorNameOff != null" >
+        #{doorNameOff,jdbcType=VARCHAR},
+      </if>
+      <if test="controllerNameOff != null" >
+        #{controllerNameOff,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNoOff != null" >
+        #{cardNoOff,jdbcType=VARCHAR},
+      </if>
+      <if test="minlEave != null" >
+        #{minlEave,jdbcType=DECIMAL},
+      </if>
+      <if test="minCompLeave != null" >
+        #{minCompLeave,jdbcType=DECIMAL},
+      </if>
+      <if test="minOverTime != null" >
+        #{minOverTime,jdbcType=DECIMAL},
+      </if>
+      <if test="minAttend != null" >
+        #{minAttend,jdbcType=DECIMAL},
+      </if>
+      <if test="timeAll != null" >
+        #{timeAll,jdbcType=DECIMAL},
+      </if>
+      <if test="lessTime != null" >
+        #{lessTime,jdbcType=DECIMAL},
+      </if>
+      <if test="minuteEarly != null" >
+        #{minuteEarly,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="onStatusBak != null" >
+        #{onStatusBak,jdbcType=DECIMAL},
+      </if>
+      <if test="offStatusBak != null" >
+        #{offStatusBak,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ruoyi.project.zazl.domain.PassResult" >
+    update QYGL_PASS_RESULT
+    <set >
+      <if test="personId != null" >
+        PERSON_ID = #{personId,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="departId != null" >
+        DEPART_ID = #{departId,jdbcType=OTHER},
+      </if>
+      <if test="departName != null" >
+        DEPART_NAME = #{departName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null" >
+        GROUP_CODE = #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shiftCode != null" >
+        SHIFT_CODE = #{shiftCode,jdbcType=VARCHAR},
+      </if>
+      <if test="onDutyDate != null" >
+        ON_DUTY_DATE = #{onDutyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clockOnTime != null" >
+        CLOCK_ON_TIME = #{clockOnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onStatus != null" >
+        ON_STATUS = #{onStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="acReaderNameOn != null" >
+        AC_READER_NAME_ON = #{acReaderNameOn,jdbcType=VARCHAR},
+      </if>
+      <if test="doorNameOn != null" >
+        DOOR_NAME_ON = #{doorNameOn,jdbcType=VARCHAR},
+      </if>
+      <if test="controllerNameOn != null" >
+        CONTROLLER_NAME_ON = #{controllerNameOn,jdbcType=VARCHAR},
+      </if>
+      <if test="minuteLate != null" >
+        MINUTE_LATE = #{minuteLate,jdbcType=DECIMAL},
+      </if>
+      <if test="onTime != null" >
+        ON_TIME = #{onTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offTime != null" >
+        OFF_TIME = #{offTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clockOffTime != null" >
+        CLOCK_OFF_TIME = #{clockOffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offStatus != null" >
+        OFF_STATUS = #{offStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="acReaderNameOff != null" >
+        AC_READER_NAME_OFF = #{acReaderNameOff,jdbcType=VARCHAR},
+      </if>
+      <if test="doorNameOff != null" >
+        DOOR_NAME_OFF = #{doorNameOff,jdbcType=VARCHAR},
+      </if>
+      <if test="controllerNameOff != null" >
+        CONTROLLER_NAME_OFF = #{controllerNameOff,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNoOff != null" >
+        CARD_NO_OFF = #{cardNoOff,jdbcType=VARCHAR},
+      </if>
+      <if test="minlEave != null" >
+        MINL_EAVE = #{minlEave,jdbcType=DECIMAL},
+      </if>
+      <if test="minCompLeave != null" >
+        MIN_COMP_LEAVE = #{minCompLeave,jdbcType=DECIMAL},
+      </if>
+      <if test="minOverTime != null" >
+        MIN_OVER_TIME = #{minOverTime,jdbcType=DECIMAL},
+      </if>
+      <if test="minAttend != null" >
+        MIN_ATTEND = #{minAttend,jdbcType=DECIMAL},
+      </if>
+      <if test="timeAll != null" >
+        TIME_ALL = #{timeAll,jdbcType=DECIMAL},
+      </if>
+      <if test="lessTime != null" >
+        LESS_TIME = #{lessTime,jdbcType=DECIMAL},
+      </if>
+      <if test="minuteEarly != null" >
+        MINUTE_EARLY = #{minuteEarly,jdbcType=DECIMAL},
+      </if>
+      <if test="regionId != null" >
+        REGION_ID = #{regionId,jdbcType=VARCHAR},
+      </if>
+      <if test="resultType != null" >
+        RESULT_TYPE = #{resultType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="onStatusBak != null" >
+        ON_STATUS_BAK = #{onStatusBak,jdbcType=DECIMAL},
+      </if>
+      <if test="offStatusBak != null" >
+        OFF_STATUS_BAK = #{offStatusBak,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where RESULT_ID = #{resultId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ruoyi.project.zazl.domain.PassResult" >
+    update QYGL_PASS_RESULT
+    set PERSON_ID = #{personId,jdbcType=VARCHAR},
+      PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      DEPART_ID = #{departId,jdbcType=OTHER},
+      DEPART_NAME = #{departName,jdbcType=VARCHAR},
+      GROUP_CODE = #{groupCode,jdbcType=VARCHAR},
+      SHIFT_CODE = #{shiftCode,jdbcType=VARCHAR},
+      ON_DUTY_DATE = #{onDutyDate,jdbcType=TIMESTAMP},
+      CLOCK_ON_TIME = #{clockOnTime,jdbcType=TIMESTAMP},
+      ON_STATUS = #{onStatus,jdbcType=DECIMAL},
+      AC_READER_NAME_ON = #{acReaderNameOn,jdbcType=VARCHAR},
+      DOOR_NAME_ON = #{doorNameOn,jdbcType=VARCHAR},
+      CONTROLLER_NAME_ON = #{controllerNameOn,jdbcType=VARCHAR},
+      MINUTE_LATE = #{minuteLate,jdbcType=DECIMAL},
+      ON_TIME = #{onTime,jdbcType=TIMESTAMP},
+      OFF_TIME = #{offTime,jdbcType=TIMESTAMP},
+      CLOCK_OFF_TIME = #{clockOffTime,jdbcType=TIMESTAMP},
+      OFF_STATUS = #{offStatus,jdbcType=DECIMAL},
+      AC_READER_NAME_OFF = #{acReaderNameOff,jdbcType=VARCHAR},
+      DOOR_NAME_OFF = #{doorNameOff,jdbcType=VARCHAR},
+      CONTROLLER_NAME_OFF = #{controllerNameOff,jdbcType=VARCHAR},
+      CARD_NO_OFF = #{cardNoOff,jdbcType=VARCHAR},
+      MINL_EAVE = #{minlEave,jdbcType=DECIMAL},
+      MIN_COMP_LEAVE = #{minCompLeave,jdbcType=DECIMAL},
+      MIN_OVER_TIME = #{minOverTime,jdbcType=DECIMAL},
+      MIN_ATTEND = #{minAttend,jdbcType=DECIMAL},
+      TIME_ALL = #{timeAll,jdbcType=DECIMAL},
+      LESS_TIME = #{lessTime,jdbcType=DECIMAL},
+      MINUTE_EARLY = #{minuteEarly,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      ON_STATUS_BAK = #{onStatusBak,jdbcType=DECIMAL},
+      OFF_STATUS_BAK = #{offStatusBak,jdbcType=DECIMAL}
+    where RESULT_ID = #{resultId,jdbcType=VARCHAR}
+  </update>
+  <select id="getListForPager" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+    select RESULT_ID, PERSON_ID, PERSON_NAME, DEPART_ID, DEPART_NAME, GROUP_CODE, SHIFT_CODE,
+    ON_DUTY_DATE, CLOCK_ON_TIME, ON_STATUS, AC_READER_NAME_ON, DOOR_NAME_ON, CONTROLLER_NAME_ON,
+    MINUTE_LATE, ON_TIME, OFF_TIME, CLOCK_OFF_TIME, OFF_STATUS, AC_READER_NAME_OFF, DOOR_NAME_OFF,
+    CONTROLLER_NAME_OFF, CARD_NO_OFF, MINL_EAVE, MIN_COMP_LEAVE, MIN_OVER_TIME, MIN_ATTEND,
+    TIME_ALL, LESS_TIME, MINUTE_EARLY,REGION_ID,RESULT_TYPE,REMARK,
+    case when (sysdate &lt; on_time)then 2 when(sysdate >= on_time and sysdate &lt; off_time)then decode(on_status,2,2,-9999) when(sysdate >= off_time)then decode(on_status+off_status,4,2,-9999) else 2 end status
+    from QYGL_PASS_RESULT
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="personId != null">
+        and PERSON_ID = #{personId}
+      </if>
+      <if test="personName != null">
+        and PERSON_NAME like concat(concat('%', #{personName}), '%')
+      </if>
+      <if test="onStatus != null">
+        and ON_STATUS = #{onStatus}
+      </if>
+      <if test="departId != null">
+        and exists(select ORGINDEXCODE from QYGL_ORG_INFO where ORGINDEXCODE = a.DEPART_ID start with ORGINDEXCODE = #{departId} connect by PARENT_ORG_INDEX_CODE = prior ORGINDEXCODE)
+      </if>
+      <if test="offStatus != null">
+        and OFF_STATUS =#{offStatus}
+      </if>
+      <if test="start_time != null">
+        and ON_DUTY_DATE <![CDATA[>=]]> to_date(#{start_time},'yyyy-MM-dd hh24:mi:ss')
+      </if>
+      <if test="end_time != null">
+        and ON_DUTY_DATE <![CDATA[<=]]> to_date(#{end_time},'yyyy-MM-dd hh24:mi:ss')
+      </if>
+      <if test="onDutyDate != null">
+        and ON_DUTY_DATE = to_date(#{onDutyDate},'yyyy-MM-dd')
+      </if>
+      <if test="month != null">
+        and ON_DUTY_DATE >= to_date(#{month},'yyyy-MM') and ON_DUTY_DATE &lt; add_months(to_date(#{month},'yyyy-MM'),1)
+      </if>
+      <if test="eventStatus != null">
+        and EVENT_STATUS = #{eventStatus}
+      </if>
+      <if test="resultType != null">
+        and RESULT_TYPE = #{resultType}
+      </if>
+      <if test="doorName != null">
+        and (door_name_on like concat(concat('%',#{doorName}),'%') or door_name_off like concat(concat('%',#{doorName}),'%'))
+      </if>
+      <if test="kaoqinzhuangtai != null">
+        <if test="kaoqinzhuangtai == 1">
+           and status > 0
+        </if>
+        <if test="kaoqinzhuangtai == 2">
+          and status &lt; 0
+        </if>
+      </if>
+      <if test="regionId != null">
+        and REGION_ID = #{regionId}
+      </if>
+    </trim>
+    order by ON_DUTY_DATE desc
+  </select>
+  <select id="statCompanyPassResult" resultType="map" parameterType="java.util.HashMap">
+    select 'zt' type,count(*)count from(select person_id from qygl_pass_result where region_id=#{regionId} and result_type = '1' and on_status = 1  and on_duty_date >= to_date(#{startTime},'yyyy-mm-dd') and on_duty_date &lt; to_date(#{endTime},'yyyy-mm-dd') group by person_id)
+    union
+    select 'cd' type,count(*)count from(select person_id from qygl_pass_result where region_id=#{regionId} and result_type = '1' and off_status = 1  and on_duty_date >= to_date(#{startTime},'yyyy-mm-dd') and on_duty_date &lt; to_date(#{endTime},'yyyy-mm-dd') group by person_id)
+    union
+    select 'qq' type,count(*)count from(select person_id from qygl_pass_result where region_id=#{regionId} and result_type = '1' and on_status = 0 and off_status = 0 and sysdate>off_time  and on_duty_date >= to_date(#{startTime},'yyyy-mm-dd') and on_duty_date &lt; to_date(#{endTime},'yyyy-mm-dd') group by person_id)
+    union
+    select 'yc' type,count(*)count from(select person_id from qygl_pass_result where region_id=#{regionId} and result_type = '1' and ((sysdate>on_time and on_status != 2) or (sysdate> off_time and off_status != 2))  and on_duty_date >= to_date(#{startTime},'yyyy-mm-dd') and on_duty_date &lt; to_date(#{endTime},'yyyy-mm-dd') group by person_id)
+    union
+    select 'qb' type,count(*)count from(select person_id from qygl_pass_result where region_id=#{regionId} and result_type = '1' and on_duty_date >= to_date(#{startTime},'yyyy-mm-dd') and on_duty_date &lt; to_date(#{endTime},'yyyy-mm-dd') group by person_id)
+  </select>
+</mapper>

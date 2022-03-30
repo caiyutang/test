@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.mapper.QyglHouseholdDomicileMapper">
+    
+    <resultMap type="QyglHouseholdDomicile" id="QyglHouseholdDomicileResult">
+        <result property="id"    column="id"    />
+        <result property="loginPhone"    column="login_phone"    />
+        <result property="openId"    column="open_id"    />
+        <result property="personName"    column="person_name"    />
+        <result property="personDate"    column="person_date"    />
+        <result property="personAddress"    column="person_address"    />
+        <result property="registerType"    column="register_type"    />
+        <result property="contactName"    column="contact_name"    />
+        <result property="contactPhone"    column="contact_phone"    />
+        <result property="remarks"    column="remarks"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectQyglHouseholdDomicileVo">
+        select id, login_phone, open_id, person_name, person_date, person_address, register_type, contact_name, contact_phone, remarks, create_time from qygl_household_domicile
+    </sql>
+
+    <select id="selectQyglHouseholdDomicileList" parameterType="QyglHouseholdDomicile" resultMap="QyglHouseholdDomicileResult">
+        <include refid="selectQyglHouseholdDomicileVo"/>
+        <where>  
+            <if test="loginPhone != null  and loginPhone != ''"> and login_phone = #{loginPhone}</if>
+            <if test="openId != null  and openId != ''"> and open_id = #{openId}</if>
+            <if test="personName != null  and personName != ''"> and person_name like concat(concat('%', #{personName}), '%')</if>
+            <if test="personDate != null  and personDate != ''"> and person_date = #{personDate}</if>
+            <if test="personAddress != null  and personAddress != ''"> and person_address like concat(concat('%', #{personAddress}), '%')</if>
+            <if test="registerType != null  and registerType != ''"> and register_type = #{registerType}</if>
+            <if test="contactName != null  and contactName != ''"> and contact_name like concat(concat('%', #{contactName}), '%')</if>
+            <if test="contactPhone != null  and contactPhone != ''"> and contact_phone = #{contactPhone}</if>
+            <if test="remarks != null  and remarks != ''"> and remarks = #{remarks}</if>
+        </where>
+    </select>
+    
+    <select id="selectQyglHouseholdDomicileById" parameterType="Long" resultMap="QyglHouseholdDomicileResult">
+        <include refid="selectQyglHouseholdDomicileVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertQyglHouseholdDomicile" parameterType="QyglHouseholdDomicile">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT seq_qygl_household_domicile.NEXTVAL as id FROM DUAL
+        </selectKey>
+        insert into qygl_household_domicile
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="loginPhone != null">login_phone,</if>
+            <if test="openId != null">open_id,</if>
+            <if test="personName != null">person_name,</if>
+            <if test="personDate != null">person_date,</if>
+            <if test="personAddress != null">person_address,</if>
+            <if test="registerType != null">register_type,</if>
+            <if test="contactName != null">contact_name,</if>
+            <if test="contactPhone != null">contact_phone,</if>
+            <if test="remarks != null">remarks,</if>
+            <if test="createTime != null">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="loginPhone != null">#{loginPhone},</if>
+            <if test="openId != null">#{openId},</if>
+            <if test="personName != null">#{personName},</if>
+            <if test="personDate != null">#{personDate},</if>
+            <if test="personAddress != null">#{personAddress},</if>
+            <if test="registerType != null">#{registerType},</if>
+            <if test="contactName != null">#{contactName},</if>
+            <if test="contactPhone != null">#{contactPhone},</if>
+            <if test="remarks != null">#{remarks},</if>
+            <if test="createTime != null">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateQyglHouseholdDomicile" parameterType="QyglHouseholdDomicile">
+        update qygl_household_domicile
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="loginPhone != null">login_phone = #{loginPhone},</if>
+            <if test="openId != null">open_id = #{openId},</if>
+            <if test="personName != null">person_name = #{personName},</if>
+            <if test="personDate != null">person_date = #{personDate},</if>
+            <if test="personAddress != null">person_address = #{personAddress},</if>
+            <if test="registerType != null">register_type = #{registerType},</if>
+            <if test="contactName != null">contact_name = #{contactName},</if>
+            <if test="contactPhone != null">contact_phone = #{contactPhone},</if>
+            <if test="remarks != null">remarks = #{remarks},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteQyglHouseholdDomicileById" parameterType="Long">
+        delete from qygl_household_domicile where id = #{id}
+    </delete>
+
+    <delete id="deleteQyglHouseholdDomicileByIds" parameterType="String">
+        delete from qygl_household_domicile where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

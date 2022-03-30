@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.zazl.mapper.QyglPersonResumeMapper">
+
+    <resultMap type="QyglPersonResume" id="QyglPersonResumeResult">
+        <result property="id"    column="id"    />
+        <result property="personId"    column="person_id"    />
+        <result property="personName"    column="person_name"    />
+        <result property="phoneNo"    column="phone_no"    />
+        <result property="email"    column="email"    />
+        <result property="gender"    column="gender"    />
+        <result property="birthday"    column="birthday"    />
+        <result property="village"    column="village"    />
+        <result property="education"    column="education"    />
+        <result property="majorKill"    column="major_kill"    />
+        <result property="nation"    column="nation"    />
+        <result property="marryType"    column="marry_type"    />
+        <result property="outlookType"    column="outlook_type"    />
+        <result property="height"    column="height"    />
+        <result property="weight"    column="weight"    />
+        <result property="salary"    column="salary"    />
+        <result property="introduce"    column="introduce"    />
+    </resultMap>
+
+    <sql id="selectQyglPersonResumeVo">
+        select id, person_id, person_name, phone_no, email, gender, birthday, village, education, major_kill, nation, marry_type, outlook_type, height, weight, salary, introduce from qygl_person_resume
+    </sql>
+
+    <select id="selectQyglPersonResumeList" parameterType="QyglPersonResume" resultMap="QyglPersonResumeResult">
+        <include refid="selectQyglPersonResumeVo"/>
+        <where>
+            <if test="personId != null  and personId != ''"> and person_id = #{personId}</if>
+            <if test="personName != null  and personName != ''"> and person_name like concat(concat('%', #{personName}), '%')</if>
+            <if test="phoneNo != null  and phoneNo != ''"> and phone_no = #{phoneNo}</if>
+            <if test="email != null  and email != ''"> and email = #{email}</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="birthday != null  and birthday != ''"> and birthday = #{birthday}</if>
+            <if test="village != null  and village != ''"> and village = #{village}</if>
+            <if test="education != null  and education != ''"> and education = #{education}</if>
+            <if test="majorKill != null  and majorKill != ''"> and major_kill = #{majorKill}</if>
+            <if test="nation != null  and nation != ''"> and nation = #{nation}</if>
+            <if test="marryType != null  and marryType != ''"> and marry_type = #{marryType}</if>
+            <if test="outlookType != null  and outlookType != ''"> and outlook_type = #{outlookType}</if>
+            <if test="height != null  and height != ''"> and height = #{height}</if>
+            <if test="weight != null  and weight != ''"> and weight = #{weight}</if>
+            <if test="salary != null  and salary != ''"> and salary = #{salary}</if>
+            <if test="introduce != null  and introduce != ''"> and introduce = #{introduce}</if>
+        </where>
+    </select>
+
+    <select id="selectQyglPersonResumeById" parameterType="String" resultMap="QyglPersonResumeResult">
+        <include refid="selectQyglPersonResumeVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertQyglPersonResume" parameterType="QyglPersonResume">
+        insert into qygl_person_resume
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="personId != null">person_id,</if>
+            <if test="personName != null">person_name,</if>
+            <if test="phoneNo != null">phone_no,</if>
+            <if test="email != null">email,</if>
+            <if test="gender != null">gender,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="village != null">village,</if>
+            <if test="education != null">education,</if>
+            <if test="majorKill != null">major_kill,</if>
+            <if test="nation != null">nation,</if>
+            <if test="marryType != null">marry_type,</if>
+            <if test="outlookType != null">outlook_type,</if>
+            <if test="height != null">height,</if>
+            <if test="weight != null">weight,</if>
+            <if test="salary != null">salary,</if>
+            <if test="introduce != null">introduce,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="personId != null">#{personId},</if>
+            <if test="personName != null">#{personName},</if>
+            <if test="phoneNo != null">#{phoneNo},</if>
+            <if test="email != null">#{email},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="birthday != null">#{birthday},</if>
+            <if test="village != null">#{village},</if>
+            <if test="education != null">#{education},</if>
+            <if test="majorKill != null">#{majorKill},</if>
+            <if test="nation != null">#{nation},</if>
+            <if test="marryType != null">#{marryType},</if>
+            <if test="outlookType != null">#{outlookType},</if>
+            <if test="height != null">#{height},</if>
+            <if test="weight != null">#{weight},</if>
+            <if test="salary != null">#{salary},</if>
+            <if test="introduce != null">#{introduce},</if>
+         </trim>
+    </insert>
+
+    <update id="updateQyglPersonResume" parameterType="QyglPersonResume">
+        update qygl_person_resume
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="personId != null">person_id = #{personId},</if>
+            <if test="personName != null">person_name = #{personName},</if>
+            <if test="phoneNo != null">phone_no = #{phoneNo},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="village != null">village = #{village},</if>
+            <if test="education != null">education = #{education},</if>
+            <if test="majorKill != null">major_kill = #{majorKill},</if>
+            <if test="nation != null">nation = #{nation},</if>
+            <if test="marryType != null">marry_type = #{marryType},</if>
+            <if test="outlookType != null">outlook_type = #{outlookType},</if>
+            <if test="height != null">height = #{height},</if>
+            <if test="weight != null">weight = #{weight},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="introduce != null">introduce = #{introduce},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteQyglPersonResumeById" parameterType="String">
+        delete from qygl_person_resume where id = #{id}
+    </delete>
+
+    <delete id="deleteQyglPersonResumeByIds" parameterType="String">
+        delete from qygl_person_resume where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

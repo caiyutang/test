@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.project.zazl.mapper.UserMapper" >
+  <resultMap id="UserResultMap" type="com.ruoyi.project.zazl.domain.User" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="user_Name" property="userName" jdbcType="VARCHAR" />
+    <result column="ga_Name" property="gaName" jdbcType="VARCHAR" />
+    <result column="deptId" property="deptId" jdbcType="VARCHAR" />
+    <result column="dept_Name" property="deptName" jdbcType="VARCHAR" />
+    <result column="management_Model" property="managementModel" jdbcType="VARCHAR" />
+    <result column="belong_Type" property="belongType" jdbcType="VARCHAR" />
+    <result column="has_Stay" property="hasStay" jdbcType="VARCHAR" />
+    <result column="phone_Number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="personnel_Name" property="personnelName" jdbcType="VARCHAR" />
+    <result column="personnel_Phone_Number" property="personnelPhoneNumber" jdbcType="VARCHAR" />
+    <result column="pq_Name" property="pqName" jdbcType="VARCHAR" />
+    <result column="mj_Name" property="mjName" jdbcType="VARCHAR" />
+    <result column="galxrxm" property="galxrxm" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="UserResultMap" parameterType="java.lang.String" >
+    select a.user_name,a.county,a.address,b.code_name MANAGEMENT_MODEL,c.code_name BELONG_TYPE,case when(a.HAS_STAY = '0')then'无' when(a.HAS_STAY='1')then'自建宿舍'when(a.has_stay='2')then'租赁宿舍' end HAS_STAY,a.name,a.PHONE_NUMBER,a.PERSONNEL_NAME,a.PERSONNEL_PHONE_NUMBER,a.ga_name,a.pq_name,a.dept_name,a.mj_name,a.GALXRXM from qygl_user a left join qygl_dictionary b on a.MANAGEMENT_MODEL = b.code and b.type = 'managementModel'
+    left join qygl_dictionary c on a.BELONG_TYPE = c.code and c.type = 'belongType' where a.id =#{id}
+  </select>
+
+  <select id="selectCompanyList" parameterType="map" resultMap="UserResultMap">
+    select * from qygl_user
+    <where>
+      and approve_status = '1' and role_level = '3'
+      <if test="userName != null and userName != ''">
+        and user_name like concat(concat('%',#{userName}),'%')
+      </if>
+      <if test="gaId != null and gaId != ''">
+        and ga_Id  = #{gaId}
+      </if>
+      <if test="deptId != null and deptId != ''">
+        and dept_Id  = #{deptId}
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ruoyi.project.zazl.mapper.PersonInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ruoyi.project.zazl.domain.PersonInfo" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PERSON_ID" property="personId" jdbcType="VARCHAR" />
+    <result column="PERSON_NAME" property="personName" jdbcType="VARCHAR" />
+    <result column="GENDER" property="gender" jdbcType="DECIMAL" />
+    <result column="ORG_PATH" property="orgPath" jdbcType="VARCHAR" />
+    <result column="ORG_INDEX_CODE" property="orgIndexCode" jdbcType="VARCHAR" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="CERTIFICATE_TYPE" property="certificateType" jdbcType="DECIMAL" />
+    <result column="CERTIFICATE_NO" property="certificateNo" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+    <result column="PHONE_NO" property="phoneNo" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="SERVER_INDEX_CODE" property="serverIndexCode" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="EDUCATION" property="education" jdbcType="VARCHAR" />
+    <result column="NATION" property="nation" jdbcType="VARCHAR" />
+    <result column="JOB_NO" property="jobNo" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="SRC_PARENT_INDEX" property="srcParentIndex" jdbcType="VARCHAR" />
+    <result column="SRC_INDEX" property="srcIndex" jdbcType="VARCHAR" />
+    <result column="START_JOB_DATE" property="startJobDate" jdbcType="TIMESTAMP" />
+    <result column="ENTRANCE_ID" property="entranceId" jdbcType="VARCHAR" />
+    <result column="IDCARD_PIC_URL" property="idcardPicUrl" jdbcType="VARCHAR" />
+    <result column="TEMP_ADDRESS" property="tempAddress" jdbcType="VARCHAR" />
+    <result column="IDCARD_PIC_LOCAL" property="idcardPicLocal" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTY" property="county" jdbcType="VARCHAR" />
+    <result column="TOWN" property="town" jdbcType="VARCHAR" />
+    <result column="VILLAGE" property="village" jdbcType="VARCHAR" />
+    <result column="LANDLORD_NAME" property="landlordName" jdbcType="VARCHAR" />
+    <result column="LANDLORD_PHONENO" property="landlordPhoneno" jdbcType="VARCHAR" />
+    <result column="STAY_STATUS" property="stayStatus" jdbcType="VARCHAR" />
+    <result column="JOB" property="job" jdbcType="VARCHAR" />
+    <result column="ENTRY_TYPE" property="entryType" jdbcType="VARCHAR" />
+    <result column="OUTLOOK_TYPE" property="outlookType" jdbcType="VARCHAR" />
+    <result column="MARRY_TYPE" property="marryType" jdbcType="VARCHAR" />
+    <result column="RESIDE_REASON" property="resideReason" jdbcType="VARCHAR" />
+    <result column="RESIDE_TYPE" property="resideType" jdbcType="VARCHAR" />
+    <result column="FILES_ID" property="filesId" jdbcType="VARCHAR" />
+    <result column="LEAVE_REASON" property="leaveReason" jdbcType="VARCHAR" />
+    <result column="LEAVE_REMARK" property="leaveRemark" jdbcType="VARCHAR" />
+    <result column="IDENTIFICATION_STATUS" property="identificationStatus" jdbcType="VARCHAR" />
+    <result column="DELETE_REASON" property="deleteReason" jdbcType="VARCHAR" />
+    <result column="DELETE_REMARK" property="deleteRemark" jdbcType="VARCHAR" />
+    <result column="IS_CHECK" property="isCheck" jdbcType="VARCHAR" />
+    <result column="TEMP_ADDRESS_NAME" property="tempAddressName" jdbcType="VARCHAR" />
+    <result column="CONTRACT_DATE_START" property="contractDateStart" jdbcType="TIMESTAMP" />
+    <result column="CONTRACT_DATE_END" property="contractDateEnd" jdbcType="TIMESTAMP" />
+    <result column="LIMIT_PERSON1_RELATION" property="limitPerson1Relation" jdbcType="VARCHAR" />
+    <result column="LIMIT_PERSON1_NAME" property="limitPerson1Name" jdbcType="VARCHAR" />
+    <result column="LIMIT_PERSON1_PHONE" property="limitPerson1Phone" jdbcType="VARCHAR" />
+    <result column="LIMIT_PERSON2_RELATION" property="limitPerson2Relation" jdbcType="VARCHAR" />
+    <result column="LIMIT_PERSON2_NAME" property="limitPerson2Name" jdbcType="VARCHAR" />
+    <result column="LIMIT_PERSON2_PHONE" property="limitPerson2Phone" jdbcType="VARCHAR" />
+    <result column="INTRODUCER_ID" property="introducerId" jdbcType="VARCHAR" />
+    <result column="INTRODUCER_NAME" property="introducerName" jdbcType="VARCHAR" />
+    <result column="SKILL" property="skill" jdbcType="VARCHAR" />
+    <result column="IS_INSURED" property="isInsured" jdbcType="VARCHAR" />
+    <result column="INSURED_CONTENT" property="insuredContent" jdbcType="VARCHAR" />
+    <result column="INSURED_OTHER" property="insuredOther" jdbcType="VARCHAR" />
+    <result column="INSURED_DATE_START" property="insuredDateStart" jdbcType="TIMESTAMP" />
+    <result column="INSURED_DATE_END" property="insuredDateEnd" jdbcType="TIMESTAMP" />
+    <result column="FACE_PIC_LOCAL" property="facePicLocal" jdbcType="VARCHAR" />
+    <result column="SFHCYS" property="sfhcys" jdbcType="VARCHAR" />
+    <result column="IDCARD_FOR_SYSTEM" property="idcardForSystem" jdbcType="VARCHAR" />
+    <result column="IMPORT_SYSTEM_DATE" property="importSystemDate" jdbcType="TIMESTAMP" />
+    <result column="BODY_MAX_TEMPERATURE_VALUE" property="bodyMaxTemperatureValue" jdbcType="VARCHAR" />
+    <result column="PERSON_CODE" property="personCode" jdbcType="VARCHAR" />
+    <result column="PERSON_TYPE" property="personType" jdbcType="VARCHAR" />
+    <result column="VISITOR_TYPE" property="visitorType" jdbcType="VARCHAR" />
+    <result column="FAMILY_RELATION" property="familyRelation" jdbcType="VARCHAR" />
+    <result column="PCS" property="pcs" jdbcType="VARCHAR" />
+    <result column="TRY_USE_DATE_START" property="tryUseDateStart" jdbcType="TIMESTAMP" />
+    <result column="TRY_USE_DATE_END" property="tryUseDateEnd" jdbcType="TIMESTAMP" />
+    <result column="WHEREABOUTS" property="whereabouts" jdbcType="VARCHAR" />
+    <result column="LEAVE_AIM_PLACE" property="leaveAimPlace" jdbcType="VARCHAR" />
+    <result column="LEAVE_DATE_START" property="leaveDateStart" jdbcType="TIMESTAMP" />
+    <result column="LEAVE_DATE_END" property="leaveDateEnd" jdbcType="TIMESTAMP" />
+    <result column="PARTTIME_ORG_CODE" property="parttimeOrgCode" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+    <result column="COMPANY_PERSONNEL" property="companyPersonnel" jdbcType="VARCHAR" />
+    <result column="COMPANY_PERSONNEL_PHONE" property="companyPersonnelPhone" jdbcType="VARCHAR" />
+    <result column="COMPANY_ADDRESS" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="zzzh" property="zzzh" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="UserResultMap" type="com.ruoyi.project.zazl.domain.User" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="user_Name" property="userName" jdbcType="VARCHAR" />
+    <result column="ga_Name" property="gaName" jdbcType="VARCHAR" />
+    <result column="dept_Name" property="deptName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select a.id,decode(a.gender,1,'男','女')gender,a.person_id,a.person_name,a.org_name,a.job,b.name company_name,a.src_parent_index,a.temp_address,a.phone_no,'https://www.zhianzhuli.com/'||a.face_Pic_Local face_Pic_Local,
+    a.certificate_no,c.code_name OUTLOOK_TYPE,d.code_name nation,e.code_name education,a.address,a.START_JOB_DATE,f.code_name entry_Type,a.FILES_ID,a.CONTRACT_DATE_START,decode(a.IS_INSURED,1,'参保','未参保')IS_INSURED,
+    g.code_name RESIDE_REASON,h.code_name RESIDE_TYPE,i.code_name county,a.town,a.village,a.LANDLORD_NAME,a.LANDLORD_PHONENO,a.LIMIT_PERSON1_RELATION,a.LIMIT_PERSON1_NAME,a.LIMIT_PERSON1_PHONE,a.LIMIT_PERSON2_RELATION,a.LIMIT_PERSON2_NAME,a.LIMIT_PERSON2_PHONE,
+    a.SKILL
+    from QYGL_PERSON_INFO a left join qygl_region_info b on a.src_parent_index = b.index_code left join qygl_dictionary c on a.OUTLOOK_TYPE = c.code and c.type = 'outlookType'
+    left join qygl_dictionary d on a.nation = d.code and d.type = '3' left join qygl_dictionary e on a.EDUCATION = e.code and e.type = '2'
+    left join qygl_dictionary f on a.ENTRY_TYPE = f.code and f.type = 'entryType' left join qygl_dictionary g on a.RESIDE_REASON = g.code and g.type = 'resideReason'
+    left join qygl_dictionary h on a.RESIDE_TYPE = h.code and h.type = 'resideType' left join qygl_dictionary i on a.county = i.code and i.type = 'xianshiqu'
+    where a.person_id = #{personId,jdbcType=VARCHAR}
+  </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.ruoyi.project.zazl.domain.PersonInfo" >
+    update QYGL_PERSON_INFO
+    <set >
+      <if test="tempAddressName != null" >
+        TEMP_ADDRESS_NAME = #{tempAddressName,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAddress != null" >
+        TEMP_ADDRESS = #{tempAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPersonInfos" parameterType="map" resultMap="BaseResultMap">
+    select a.id,a.person_id,a.person_name,a.org_name,a.job,b.name company_name,a.src_parent_index,a.temp_address,a.phone_no,a.address
+    from QYGL_PERSON_INFO a left join qygl_region_info b on a.src_parent_index = b.index_code
+    <where>
+        and a.status = '1'
+      <if test="phoneNo != null and phoneNo != '' ">
+        and a.phone_no = #{phoneNo}
+      </if>
+      <if test="dormId != null and dormId != '' ">
+        and a.temp_address = #{dormId}
+      </if>
+      <if test="county != null and county != '' ">
+        and a.src_parent_index = #{county}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectList" parameterType="map" resultMap="BaseResultMap">
+    select a.id,a.person_id,a.person_name,a.org_name,a.job,b.name company_name,a.src_parent_index,a.temp_address,a.status,a.phone_no,a.address,'https://www.zhianzhuli.com/'||a.face_Pic_Local face_Pic_Local
+    from QYGL_PERSON_INFO a left join qygl_region_info b on a.src_parent_index = b.index_code
+    <where>
+      <if test="phoneNo != null and phoneNo != '' ">
+        and a.phone_no = #{phoneNo}
+      </if>
+      <if test="status != null and status != '' ">
+        and a.status = #{status}
+      </if>
+      <if test="dormId != null and dormId != '' ">
+        and a.temp_address = #{dormId}
+      </if>
+      <if test="county != null and county != '' ">
+        and a.src_parent_index = #{county}
+      </if>
+      <if test="orgName != null and orgName != '' ">
+        and a.org_name like concat(concat('%',#{orgName}),'%')
+      </if>
+      <if test="personName != null and personName != '' ">
+        and a.person_Name like concat(concat('%',#{personName}),'%')
+      </if>
+      <if test="sfhcys != null and sfhcys != '' ">
+        and a.sfhcys = #{sfhcys}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectPersonInfo" parameterType="map" resultMap="BaseResultMap">
+    select a.id,a.person_id,a.person_name,a.org_name,a.job,b.name company_name,a.src_parent_index,a.temp_address
+    from QYGL_PERSON_INFO a left join qygl_region_info b on a.src_parent_index = b.index_code
+    <where>
+      and a.status = '1'
+      <if test="phoneNo != null and phoneNo != '' ">
+        and a.phone_no = #{phoneNo}
+      </if>
+      <if test="regionId != null and regionId != '' ">
+        and a.src_parent_index = #{regionId}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectCompanyInfo" parameterType="string" resultType="map">
+  select 'ygsl' type,count(*) count from qygl_person_info where status = '1' and src_parent_index = #{regionId}
+  union
+  select 'dyrz' type,count(*) count from qygl_person_info where status = '1' and TO_CHAR(START_JOB_DATE,'YYYY-MM') = TO_CHAR(SYSDATE,'YYYY-MM') and src_parent_index = #{regionId}
+  union
+  select 'dylz' type,count(*) count from qygl_person_info where status = '2' and substr(update_time,1,7) = TO_CHAR(SYSDATE,'YYYY-MM') and src_parent_index = #{regionId}
+  union
+  select 'wrz' type,count(*) count from qygl_person_info where status = '0' and src_parent_index = #{regionId}
+  union
+  select 'drz' type,count(*) count from qygl_person_info where status = '1' and certificate_type = '0' and src_parent_index = #{regionId}
+  union
+  select 'bms' type,count(*) count from QYGL_ORG_INFO where ORGINDEXCODE != (select unit_no from qygl_user where role_level = '3' and county = #{regionId}) start with ORGINDEXCODE = (select unit_no from qygl_user where role_level = '3' and county = #{regionId}) connect by PARENT_ORG_INDEX_CODE = prior ORGINDEXCODE
+  </select>
+
+  <update id="personOutDorm" parameterType="java.lang.String" >
+    update QYGL_PERSON_INFO set TEMP_ADDRESS = null, TEMP_ADDRESS_NAME = null,update_time = to_char(sysdate,'yyyy-MM-dd hh24:mi:ss')
+    where PERSON_ID = #{personId,jdbcType=VARCHAR}
+  </update>
+
+</mapper>
