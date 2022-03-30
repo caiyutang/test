@@ -12,7 +12,7 @@ import com.ruoyi.project.system.domain.QyglHouseholdDomicile;
 public interface IQyglHouseholdDomicileService 
 {
     /**
-     * 查询无户口人员登记
+     * 查询无户口人员登记数据
      * 
      * @param id 无户口人员登记主键
      * @return 无户口人员登记

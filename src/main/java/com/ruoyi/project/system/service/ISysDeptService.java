@@ -12,7 +12,7 @@ import com.ruoyi.project.system.domain.SysDept;
 public interface ISysDeptService
 {
     /**
-     * 查询部门管理数据
+     * 查询部门管理数据预提费用
      * 
      * @param dept 部门信息
      * @return 部门信息集合

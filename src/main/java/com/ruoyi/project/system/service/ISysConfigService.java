@@ -11,7 +11,7 @@ import com.ruoyi.project.system.domain.SysConfig;
 public interface ISysConfigService
 {
     /**
-     * 查询参数配置信息
+     * 查询参数配置信息121
      * 
      * @param configId 参数配置ID
      * @return 参数配置信息
