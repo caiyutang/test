@@ -15,7 +15,7 @@ public class QyglHouseholdDomicile extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 登记记录ID111111111 主键 */
+    /** 登记记录ID 主键 */
     private Long id;
 
     /** 登录人手机号 */
