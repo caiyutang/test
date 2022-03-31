@@ -4,7 +4,7 @@ import java.util.List;
 import com.ruoyi.project.system.domain.QyglHouseholdDomicile;
 
 /**
- * 无户口人员登记Service接口
+ * 无户口人员登记接口
  * 
  * @author ruoyi
  * @date 2022-03-22
